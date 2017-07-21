@@ -25,6 +25,9 @@ module.exports = (app) => {
 
         }//if user sign in first time call authorize api for google sign in
         else{
+            res.cookie('requestedUrl', req.originalUrl, {
+                maxAge: 900000,
+            });
             res.redirect("http://newers-world-oauth.qa2.tothenew.net/oauth/authorize?client_id=e6d6a83e-6c7a-11e7-9394-406186be844b")
         }
     }
@@ -33,9 +36,8 @@ module.exports = (app) => {
 
     //Route for index page
     app.get("/",(req, res) => {
-    res.sendFile(__dirname + "/index.html")
-
-     });
+        res.sendFile(__dirname + "/index.html")
+    });
 
     //route for profile page
     app.get("/profile",(req, res) => {
@@ -50,8 +52,7 @@ module.exports = (app) => {
                 maxAge: 900000,
             });
             request("http://newers-world-oauth.qa2.tothenew.net/oauth/user?access_token=" + token, (err, userData) => {
-                console.log(userData.body, req.originalUrl);
-                res.sendFile(__dirname + "/index.html")
+                res.sendFile(__dirname + (req.cookies['requestedUrl'] == '/profile' ? '/profile.html' : '/index.html'))
             })
         });
     };
