@@ -52,6 +52,10 @@ module.exports = (app) => {
                 maxAge: 900000,
             });
             request("http://newers-world-oauth.qa2.tothenew.net/oauth/user?access_token=" + token, (err, userData) => {
+                console.log(userData.body);
+                res.cookie('user', (userData.body), {
+                    maxAge: 900000,
+                });
                 res.sendFile(__dirname + (req.cookies['requestedUrl'] == '/profile' ? '/profile.html' : '/index.html'))
             })
         });
