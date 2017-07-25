@@ -3,23 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script type = "text/javascript">
-        <!--
-        match = document.cookie.match(new RegExp('user' + '=([^;]+)'));
-        if (match){
-            var user = (match[1]);
-        }
-        var userObj = user && JSON.parse(decodeURIComponent(user))
-        //-->
-    </script>
+
 </head>
 <body>
-    <div id="user">
-        <script type="text/javascript">
-        document.write('email: ' + userObj.email + ' Code: ' + userObj.employeeCode);
-    </script></div>
     <a href="/profile">Get Profile</a>
-
-<!--<a href="http://newers-world-oauth.qa2.tothenew.net/oauth/authorize?client_id=e6d6a83e-6c7a-11e7-9394-406186be844b">Authorize</a>-->
 </body>
 </html>
