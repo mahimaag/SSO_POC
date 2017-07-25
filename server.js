@@ -4,6 +4,9 @@
 const express = require("express");
 const routes=require("./route");
 const cookieParser = require("cookie-parser");
+//const jwt_token=require("jsonwebtoken");
+require("./datasource");
+process.env.SECRET_KEY='NothingIsImpossible';
 
 const app=express();
 app.use(cookieParser());
