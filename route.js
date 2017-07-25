@@ -57,7 +57,7 @@ module.exports = (app) => {
             // });
             next();
         }//if user sign in first time call authorize api for google sign in
-        else {
+        else{
             res.redirect("http://newers-world-oauth.qa2.tothenew.net/oauth/authorize?client_id=e6d6a83e-6c7a-11e7-9394-406186be844b")
         }
     };
@@ -75,9 +75,8 @@ module.exports = (app) => {
     app.use(Error);
 
     //Route for index page
-    app.get("/", (req, res) => {
+    app.get("/",(req, res) => {
         res.sendFile(__dirname + "/index.html")
-
     });
 
     //route for profile page
